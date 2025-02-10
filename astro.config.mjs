@@ -1,40 +1,44 @@
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import starlight from "@astrojs/starlight";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	output: 'static',
+	output: "static",
 	integrations: [
 		starlight({
-			title: 'Dions Radio',
+			title: "Dions Radio",
 			// Set English as the default language for this site.
-      // defaultLocale: 'en',
-      locales: {
-        // English docs in `src/content/docs/en/`
-        root: {
-          label: 'English',
-          lang: 'en', // lang is required for root locales
-        },
-        // Simplified Chinese docs in `src/content/docs/zh-cn/`
-        'zh-cn': {
-          label: '简体中文',
-          lang: 'zh-CN',
-        },
-      },
+			// defaultLocale: 'en',
+			locales: {
+				// English docs in `src/content/docs/en/`
+				root: {
+					label: "English",
+					lang: "en", // lang is required for root locales
+				},
+				// Simplified Chinese docs in `src/content/docs/zh-cn/`
+				"zh-cn": {
+					label: "简体中文",
+					lang: "zh-CN",
+				},
+			},
+			components: {
+				// Override the default `SocialIcons` component.
+				Footer: "./src/components/ConditionalFooter.astro",
+			},
 			social: {
-				github: 'https://github.com/dionsradio',
+				github: "https://github.com/dionsradio",
 			},
 			sidebar: [
 				{
-					label: 'Guides',
+					label: "Guides",
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: "Example Guide", slug: "guides/example" },
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: "Reference",
+					autogenerate: { directory: "reference" },
 				},
 			],
 		}),
